@@ -18,6 +18,11 @@ export const createTheme = async (req: Request, res: Response) => {
 export const getThemes = async (req: Request, res: Response) => {
   try {
     const themes = await Theme.find();
+ 
+    if (themes.length === 0) {
+      res.status(HttpStatusCodes.OK).json([]);
+    }
+
     res.status(HttpStatusCodes.OK).json(themes);
   } catch (error) {
     res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Error fetching themes', error });

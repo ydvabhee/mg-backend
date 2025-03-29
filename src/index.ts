@@ -1,17 +1,39 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import connectDB from './config/database';
-
+import winston from 'winston';
 // Import routes
 import {themeRouter} from './routes/theme.route';
 import { contentRouter } from './routes/content.route';
 import { gameRouter } from './routes/game.route';
+import logger from './utills/logger';
 dotenv.config();  
 
 
 const app = express();
 const port = 3000;
 
+
+const origin = process.env.ORIGIN;
+
+app.use(cors({
+  origin: origin
+}))
+  
+
+// app.use((req, res, next) => {
+//   const origin = req.headers.origin;
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
+
+// implement winston logger for requests
+app.use((req, res, next) => {
+  logger.info(`Received request ${req.method} ${req.url} from ${req.ip}`);
+  next();
+});
+ 
 const mongoURI = process.env.MONGO_URI;
 
 if (!mongoURI) {

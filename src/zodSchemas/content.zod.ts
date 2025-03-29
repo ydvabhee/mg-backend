@@ -1,3 +1,4 @@
+import { isValidObjectId } from 'mongoose'
 import { z } from 'zod'
 
 export const createContentBodySchema = z.object({
@@ -24,3 +25,11 @@ export const createContentBulkBodySchema = z.object({
 export const createContentBulkSchema = z.object({
   body: createContentBulkBodySchema
 }) 
+
+export const getContentByThemeIdParamsSchema = z.object({
+  themeId: z.string().refine((val) => isValidObjectId(val), 'Invalid Id in param'),
+}).strict()
+
+export const getContentByThemeIdSchema = z.object({
+  params: getContentByThemeIdParamsSchema,
+})

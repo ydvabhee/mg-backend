@@ -61,7 +61,7 @@ export const createBulkContent = async (req: Request, res: Response) => {
 export const getContentsForTheme = async (req: Request, res: Response) => { 
   try {
    
-    const themeId = "67e7f615bfae45c265fd6305"
+    const themeId = req.params.themeId
     let limit = 10;
 
     const contents = await Content.aggregate([
@@ -74,10 +74,11 @@ export const getContentsForTheme = async (req: Request, res: Response) => {
           docs: { $push: "$$ROOT" }  
         } 
       },
-      
+
       { $match: { "count": { $gt: 1 } } },
       { $unwind: "$docs" },
       { $replaceRoot: { newRoot: "$docs" } },
+      { $project: { _id: 1, title:1, description: 1, url: 1 } },
       { $limit: limit }
     ]);
 

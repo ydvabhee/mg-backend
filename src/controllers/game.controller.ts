@@ -87,19 +87,27 @@ export const moveInGame = async (req: Request, res: Response) => {
     const firstCard = content[0]
     const secondCard = content[1]
 
-    if(firstCard.value !== secondCard.value) {
-      res.status(HttpStatusCodes.BAD_REQUEST).json({
-        message: "Invalid cards"
-      })
-    } 
     game.moves += 1
+
+    if(firstCard.value !== secondCard.value) {
+      await game.save()
+      res.status(HttpStatusCodes.OK).json({
+       validMove: false,
+       ...game.toJSON()
+      })
+      return
+    } 
+   
     game.score += 1
 
     if(game.score === 2) {
       game.endTime = Date.now()
     }
     await game.save()
-    res.status(HttpStatusCodes.OK).json(game)
+    res.status(HttpStatusCodes.OK).json({
+      validMove: true,
+      ...game.toJSON()
+     })
 
   } catch (error) {
     res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Error moving in game', error });
