@@ -1,3 +1,4 @@
+import { isValidObjectId } from 'mongoose'
 import { z } from 'zod'
 
 export const startGameBodySchema = z.object({
@@ -18,3 +19,12 @@ export const moveInGameBodySchema = z.object({
 export const moveInGameSchema = z.object({
   body: moveInGameBodySchema,
 })
+
+export const summaryGameParamsSchema = z.object({
+  id: z.string().refine((val) => isValidObjectId(val), 'Invalid Id in param'),
+}).strict()
+
+export const summaryGameSchema = z.object({
+  params: summaryGameParamsSchema,
+})
+
