@@ -5,6 +5,7 @@ import connectDB from './config/database';
 // Import routes
 import {themeRouter} from './routes/theme.route';
 import { contentRouter } from './routes/content.route';
+import { gameRouter } from './routes/game.route';
 dotenv.config();  
 
 
@@ -36,3 +37,4 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/v1/theme', themeRouter);
 app.use('/api/v1/content', contentRouter);
+app.use('/api/v1/game', gameRouter);

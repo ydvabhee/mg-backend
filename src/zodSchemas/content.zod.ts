@@ -5,6 +5,9 @@ export const createContentBodySchema = z.object({
   themeId: z.string().min(2).max(30)
 }).strict()
 
+export const createContentSchema = z.object({
+  body: createContentBodySchema
+}) 
 
 export const createContentBulkBodySchema = z.object({
   data: z.array(
@@ -16,3 +19,8 @@ export const createContentBulkBodySchema = z.object({
   ).min(1).max(500),
   themeId: z.string().min(2).max(30)
 }).strict()
+
+
+export const createContentBulkSchema = z.object({
+  body: createContentBulkBodySchema
+}) 
