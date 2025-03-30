@@ -12,6 +12,9 @@ jobs:
   test:
     name: Run Tests
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+      MONGO_URI: "mongodb+srv://abhee:6HPZdEgVuugdLT4f@cluster0.2onxt.mongodb.net/"
 
     steps:
       - name: Checkout repository
