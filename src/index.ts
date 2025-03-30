@@ -14,7 +14,7 @@ dotenv.config();
 
 
 export const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000;
 
 
 const origin = process.env.ORIGIN;
