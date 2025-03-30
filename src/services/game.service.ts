@@ -68,7 +68,7 @@ export const calculateScore  = async (moves: number, score: number ) => {
 export const moveInGameService = async (gameId: string, selectedCardIds: string[]) => {
   try {
     const game = await Game.findById(gameId);
-    const TOTAL_CARD_PAIRS = 2
+    const TOTAL_CARD_PAIRS = 18
     if (!game) {
       throw new Error("Game not found");
     }

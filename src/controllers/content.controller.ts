@@ -27,7 +27,7 @@ export const getContentsForTheme = async (req: Request, res: Response) => {
   try {
    
     const themeId = req.params.themeId
-    let limit = 10;
+    let limit = 36;
     const contents = await  getContentsForThemeService(themeId, limit);
     res.status(HttpStatusCodes.OK).json(contents);
   } catch (error) {
