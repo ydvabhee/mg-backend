@@ -52,7 +52,7 @@ export const getContentsForThemeService = async (themeId: string, limit: number)
   try {
     const contents = await Content.aggregate([
   
-      { $match: { "theme": new ObjectId(themeId) } },
+      { $match: { "theme": new ObjectId(themeId), isActive: true } },
 
       { $group: { 
           _id: "$value", 

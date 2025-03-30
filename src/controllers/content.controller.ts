@@ -34,3 +34,5 @@ export const getContentsForTheme = async (req: Request, res: Response) => {
     res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Error fetching contents' });
   }
 }
+
+

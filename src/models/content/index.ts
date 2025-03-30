@@ -28,6 +28,10 @@ const ContentSchema: Schema = new Schema<IContent>({
     type: Date,
     default: Date.now,
   },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 export const Content = model<IContent & Document>("Content", ContentSchema);

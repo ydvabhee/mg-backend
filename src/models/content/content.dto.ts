@@ -7,6 +7,7 @@ export interface IContent {
   theme: ObjectId
   createdAt: Date
   description?: string
+  isActive?: boolean
 }
 
 export type CreateContentServiceDto = Omit<IContent, 'createdAt'>;
