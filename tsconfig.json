@@ -1,10 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "outDir": "build",
-    "rootDir": "src",
-    "strict": true,
-    "esModuleInterop": true
-  }
+    "rootDir": "./", // Set rootDir to the project root
+    "outDir": "./dist", // Output directory
+    // ...other options
+  },
+  "include": [
+    "src/**/*", // Include all files in src
+    "test/**/*", // Include test files
+    "jest.config.ts" // Include Jest config
+  ],
+  "exclude": [
+    "node_modules", // Exclude dependencies
+    "dist" // Exclude build output
+  ]
 }
