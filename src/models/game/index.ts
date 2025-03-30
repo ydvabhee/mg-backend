@@ -22,7 +22,12 @@ const GameSchema: Schema = new Schema<IGame>({
   moves: {
     type: Number,
     default: 0
+  },
+  cardMatches: {
+    type: Number,
+    default: 0
   }
+
 })
 
 

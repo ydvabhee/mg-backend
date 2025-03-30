@@ -2,10 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "nodemon src/index.ts"
+    "start": "nodemon src/index.ts",
+    "test": "jest --coverage --watch --runInBand"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +26,15 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@jest/globals": "^29.7.0",
     "@types/cors": "^2.8.17",
-    "nodemon": "^3.1.9"
+    "@types/jest": "^29.5.14",
+    "@types/supertest": "^6.0.3",
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^10.1.4",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.3.0"
   }
 }

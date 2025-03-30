@@ -5,7 +5,7 @@ import { getLogger } from "../utills/logger";
 
 
 const logger= getLogger()
-export const createGameService = async (payload: Omit<IGame, "theme"> & { theme: string }) => {
+export const createGameService = async (payload: Omit<IGame, 'theme'> & { theme: string }) => {
   try {
     const game = new Game(payload);
     await game.save();
@@ -52,36 +52,44 @@ export const getGameSummaryService = async (id: string) => {
 };
 
 
+export const calculateScore  = async (moves: number, score: number ) => {
+
+  const BASE_INCREMENT = 5
+
+  if (moves === 0) {
+    return score;
+  }
+
+  const newScore = score + BASE_INCREMENT + Math.floor(50 / moves);
+  return newScore
+}
+
+
 export const moveInGameService = async (gameId: string, selectedCardIds: string[]) => {
   try {
-
     const game = await Game.findById(gameId);
+    const TOTAL_CARD_PAIRS = 2
     if (!game) {
       throw new Error("Game not found");
     }
 
     const content = await Content.find({ _id: { $in: selectedCardIds } });
-
     if (content.length < 2) {
       throw new Error("Invalid move: Must select two cards");
     }
 
     const [firstCard, secondCard] = content;
-
     game.moves += 1;
     let validMove = firstCard.value === secondCard.value;
-
     if (validMove) {
-      game.score += 1;
-
-      // Check if the game is complete
-      if (game.score === 2) {
+      game.cardMatches += 1;
+      game.score = await calculateScore(game.moves, game.score)
+      
+      if (game.cardMatches === TOTAL_CARD_PAIRS) {
         game.endTime = Date.now();
       }
     }
-
     await game.save();
-
     return {
       validMove,
       ...game.toJSON(),

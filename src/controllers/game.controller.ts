@@ -16,7 +16,8 @@ export const createGame = async (req: Request, res: Response) => {
       score: 0,
       startTime: Date.now(),
       endTime: 0,
-      moves: 0
+      moves: 0,
+      cardMatches: 0
     });
 
     await game.save();
@@ -31,7 +32,6 @@ export const getGameSummary = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const gameSummary = await getGameSummaryService(id);
-    
     res.status(HttpStatusCodes.OK).json(gameSummary);
   } catch (error: any) {
     res.status(

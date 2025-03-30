@@ -18,6 +18,7 @@ export const getThemes = async (req: Request, res: Response) => {
  
     if (themes.length === 0) {
       res.status(HttpStatusCodes.OK).json([]);
+      return
     }
 
     res.status(HttpStatusCodes.OK).json(themes);
@@ -26,12 +27,14 @@ export const getThemes = async (req: Request, res: Response) => {
   }
 }
 
+
 export const getThemeById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const theme = await getThemeByIdService(id);
     if (!theme) {
-      return res.status(HttpStatusCodes.NOT_FOUND).json({ message: 'Theme not found' });
+      res.status(HttpStatusCodes.NOT_FOUND).json({ message: 'Theme not found' });
+      return
     }
     res.status(HttpStatusCodes.OK).json(theme);
   } catch (error) {

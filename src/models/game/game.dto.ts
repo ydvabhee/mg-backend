@@ -6,5 +6,6 @@ export interface IGame {
   startTime: number
   endTime: number
   moves: number
+  cardMatches: number
 }
 

@@ -9,7 +9,7 @@ export const createContent = async (req: Request, res: Response) => {
     const content = await createContentService({title, value, url, theme, description});
     res.status(HttpStatusCodes.CREATED).json(content);
   } catch (error) {
-    res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Error creating content', error });
+    res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Error creating content' });
   }
 }
 
@@ -19,7 +19,7 @@ export const createBulkContent = async (req: Request, res: Response) => {
     const createdContents = await createBulkContentService(req.body);
     res.status(HttpStatusCodes.CREATED).json(createdContents);
   } catch (error) {
-    res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Error creating contents', error });
+    res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Error creating contents' });
   }
 }
  
@@ -31,6 +31,6 @@ export const getContentsForTheme = async (req: Request, res: Response) => {
     const contents = await  getContentsForThemeService(themeId, limit);
     res.status(HttpStatusCodes.OK).json(contents);
   } catch (error) {
-    res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Error fetching contents', error });
+    res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Error fetching contents' });
   }
 }
