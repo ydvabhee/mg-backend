@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_ENV: production
-      MONGO_URI: "mongodb+srv://abhee:6HPZdEgVuugdLT4f@cluster0.2onxt.mongodb.net/"
+      MONGO_URI: ${{ secrets.SECRET_API_KEY }}
 
     steps:
       - name: Checkout repository
