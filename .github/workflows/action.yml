@@ -13,7 +13,6 @@ jobs:
     name: Run Tests
     runs-on: ubuntu-latest
     env:
-      NODE_ENV: production
       MONGO_URI: ${{ secrets.SECRET_API_KEY }}
 
     steps:
