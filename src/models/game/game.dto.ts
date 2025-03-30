@@ -7,3 +7,4 @@ export interface IGame {
   endTime: number
   moves: number
 }
+

@@ -8,3 +8,5 @@ export interface IContent {
   createdAt: Date
   description?: string
 }
+
+export type CreateContentServiceDto = Omit<IContent, 'createdAt'>;

@@ -7,7 +7,9 @@ import winston from 'winston';
 import {themeRouter} from './routes/theme.route';
 import { contentRouter } from './routes/content.route';
 import { gameRouter } from './routes/game.route';
-import logger from './utills/logger';
+import { getLogger } from './utills/logger';
+ 
+const logger = getLogger()
 dotenv.config();  
 
 
@@ -21,12 +23,6 @@ app.use(cors({
   origin: origin
 }))
   
-
-// app.use((req, res, next) => {
-//   const origin = req.headers.origin;
-//   res.header('Access-Control-Allow-Origin', '*');
-//   next();
-// });
 
 // implement winston logger for requests
 app.use((req, res, next) => {
