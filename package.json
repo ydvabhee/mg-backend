@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "nodemon src/index.ts",
-    "test": "jest --coverage --watch --runInBand"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
