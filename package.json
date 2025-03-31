@@ -5,6 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc",
+    "server": "node dist/src/index.js",
     "start": "nodemon src/index.ts",
     "test": "jest --coverage --runInBand" 
   },
