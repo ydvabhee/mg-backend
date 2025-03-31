@@ -8,7 +8,7 @@ import {themeRouter} from './routes/theme.route';
 import { contentRouter } from './routes/content.route';
 import { gameRouter } from './routes/game.route';
 import { getLogger } from './utills/logger';
- 
+import path from 'path';
 const logger = getLogger()
 dotenv.config();  
 
@@ -16,12 +16,15 @@ dotenv.config();
 export const app = express();
 const port = process.env.PORT || 5000;
 
-
-const origin = process.env.ORIGIN;
+const origin = process.env.ORIGIN || [];
 
 app.use(cors({
   origin: origin
 }))
+
+// Serve static files from the React app build directory
+app.use(express.static(path.join(__dirname, '..', '..', 'client', 'dist'))); // Correct path for React build
+ 
   
 
 // implement winston logger for requests
