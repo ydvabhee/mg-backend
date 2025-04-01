@@ -1,4 +1,13 @@
-# Node.js TypeScript Express MongoDB Backend
+# Node.js TypeScript Express MongoDB Backend Server for [MG-FRONTEND](https://github.com/ydvabhee/mg-frontend)
+ 
+This application is deployed at: [mg-backend-app.onrender.com](https://mg-backend-app.onrender.com/)
+#### Note: If the server has been inactive for a while, it may take 30 seconds to 1 minute to load.
+
+
+
+### Frontend Repository
+
+The corresponding frontend repository is available at: [mg-frontend](https://github.com/ydvabhee/mg-frontend)
 
 ## ✨ Features
 
@@ -148,6 +157,11 @@ This runs unit and integration tests, showing results and generating coverage re
 
 ---
 
+
+
  
 Happy coding! 🚀
+
+
+
 
